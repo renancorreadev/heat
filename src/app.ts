@@ -6,11 +6,12 @@ import * as http from 'http';
 import * as cors from "cors";
 
 const app = express();
-const ServerHttp = http.createServer(app); 
-app.use(express.json()); 
-app.use(router); 
+const serverHttp = http.createServer(app);
+app.use(express.json());
+app.use(router);
+app.use(cors());
 
-const io = new Server(ServerHttp, {
+const io = new Server(serverHttp, {
     cors: {
         origin: "*"
     }
@@ -26,8 +27,8 @@ app.get("/github", (request, response) => {
 
 app.get("/signin/callback", (request, response) => {
     const {code} = request.query; //
-    return response.json(code); 
+    return response.json(code);
 })
 
-ServerHttp.listen(4000, () => console.log(`🚀 Server is running on port 4000 `));
+export {serverHttp, io};
 
