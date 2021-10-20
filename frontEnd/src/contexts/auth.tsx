@@ -13,7 +13,7 @@ type AuthContextData = {
   signInUrl: string;
 };
 
-const AuthContext = createContext({} as AuthContextData);
+export const AuthContext = createContext({} as AuthContextData);
 
 type AuthProvider = {
   children: ReactNode;
